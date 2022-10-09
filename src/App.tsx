@@ -1,26 +1,18 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
-
+// import './App.css';
+const Pc= React.lazy(()=> import("./pc"));
+const Mobile=React.lazy(()=> import("./mobile"));
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    {(
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent,
+    )
+  )?<Mobile></Mobile>:<Pc></Pc>}
     </div>
-  );
+  ); 
 }
 
 export default App;
